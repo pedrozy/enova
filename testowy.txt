@@ -1,1 +1,0 @@
-To jest plik tekstowy o nazwie testowy.txt
