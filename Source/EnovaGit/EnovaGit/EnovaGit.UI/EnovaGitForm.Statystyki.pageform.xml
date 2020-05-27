@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<DataForm xmlns="http://www.enova.pl/schema/form.xsd" Priority="100">
+  <Page CaptionHtml="Git" DataContext="{DataSource}">
+
+    <Group CaptionHtml="Lokalizacja repozytorium Git">
+      <Row>
+        <Field EditValue="{RepositoryPath}" CaptionHtml="Repozytorium" Width="60" LabelWidth="15" IsReadOnly="true" />
+        <Command CaptionHtml="Przeglądaj" MethodName="PrzegladajAction"/>
+      </Row>
+    </Group>
+
+    <Group CaptionHtml="Opcje filtrowania">
+      <Row>
+        <Field EditValue="{Date}" CaptionHtml="Data" Width="20" LabelWidth="15" />
+        <Gap Width="13" />
+        <Field EditValue="{User}" CaptionHtml="Użytkownik" Width="20" LabelWidth="20" />
+      </Row>
+    </Group>
+
+    <Group CaptionHtml="Statystyki">
+      <Row>
+        <Field EditValue="{Daily}" CaptionHtml="Ilość commitów" Width="20" LabelWidth="15" IsReadOnly="true" Class="RightAlign" />
+        <Gap Width="13" />
+        <Field EditValue="{Average}" CaptionHtml="Średnia ilość commitów" Width="20" LabelWidth="20"  IsReadOnly="true" Class="RightAlign"/>
+      </Row>
+    </Group>
+
+    <Group CaptionHtml="Lista commitów">
+      <Row>
+        <Stack Width="*" Height="*">
+          <Grid EditValue="{GitCommitListFiltered}" Width="150" Height="*">
+            <Field CaptionHtml="Data" Width="10" EditValue="{Date}" />
+            <Field CaptionHtml="Hashcode" Width="15" EditValue="{Hashcode}" />
+            <Field CaptionHtml="Użytkownik" Width="15" EditValue="{Username}" />
+            <Field CaptionHtml="Opis" Width="40" EditValue="{Description}" />
+          </Grid>
+        </Stack>
+      </Row>
+    </Group>
+
+  </Page>
+</DataForm>
