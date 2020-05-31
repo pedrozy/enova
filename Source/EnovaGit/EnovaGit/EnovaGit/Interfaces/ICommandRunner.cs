@@ -1,7 +1,9 @@
-﻿namespace EnovaGit.Interfaces
+﻿using EnovaGit.DataTypes;
+
+namespace EnovaGit.Interfaces
 {
     public interface ICommandRunner
     {
-        string Run(string cmd, string workingDirectory);
+        CommandOutput Run(string cmd, string workingDirectory);
     }
 }

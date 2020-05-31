@@ -31,8 +31,15 @@ namespace EnovaGit.Commands
                 throw new Exception($"W lokalizacji {repositoryPath} nie znaleziono repozytorium Gita.");
             }
 
-            var rawGitLog = CmdRunner.Run(command, repositoryPath);
-            return CreateGitCommitList(rawGitLog);
+            var result = CmdRunner.Run(command, repositoryPath);
+            var errorMsgLines = result.ErrorData.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (errorMsgLines.Length != 0)
+            {
+                throw new Exception(string.Join("\n", errorMsgLines));
+            }
+
+            return CreateGitCommitList(result.OutputData);
         }
 
         private List<GitCommit> CreateGitCommitList(string gitLog)

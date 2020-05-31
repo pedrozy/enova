@@ -1,4 +1,5 @@
-﻿using EnovaGit.Interfaces;
+﻿using EnovaGit.DataTypes;
+using EnovaGit.Interfaces;
 using System.Diagnostics;
 using System.Text;
 
@@ -6,7 +7,7 @@ namespace EnovaGit
 {
     public class CommandRunner : ICommandRunner
     {
-        public string Run(string command, string workingDirectory)
+        public CommandOutput Run(string command, string workingDirectory)
         {
             var process = new Process
             {
@@ -21,16 +22,17 @@ namespace EnovaGit
                 }
             };
 
-            StringBuilder sb = new StringBuilder();
+            StringBuilder OutputStringBuilder = new StringBuilder();
+            StringBuilder ErrorStringBuilder = new StringBuilder();
 
             process.OutputDataReceived += delegate (object sender, DataReceivedEventArgs e)
             {
-                sb.AppendLine(e.Data);
+                OutputStringBuilder.AppendLine(e.Data);
             };
 
             process.ErrorDataReceived += delegate (object sender, DataReceivedEventArgs e)
             {
-                sb.AppendLine(e.Data);
+                ErrorStringBuilder.AppendLine(e.Data);
             };
 
             process.Start();
@@ -38,7 +40,11 @@ namespace EnovaGit
             process.BeginErrorReadLine();
             process.WaitForExit();
 
-            return ConvertToUTF8(sb.ToString());
+            return new CommandOutput()
+            {
+                OutputData = ConvertToUTF8(OutputStringBuilder.ToString()),
+                ErrorData = ConvertToUTF8(ErrorStringBuilder.ToString())
+            };
         }
 
         private string ConvertToUTF8(string text)

@@ -1,14 +1,20 @@
-﻿using EnovaGit.Interfaces;
+﻿using EnovaGit.DataTypes;
+using EnovaGit.Interfaces;
 
 namespace EnovaGit.Tests.Stubs
 {
     public class CommandRunnerStub : ICommandRunner
     {
-        public string ReturnedValue { get; set; }
+        public string ReturnedOutputData { get; set; }
+        public string ReturnedErrorData { get; set; } = string.Empty;
 
-        public string Run(string cmd, string workingDirectory)
+        public CommandOutput Run(string cmd, string workingDirectory)
         {
-            return ReturnedValue;
+            return new CommandOutput()
+            {
+                OutputData = ReturnedOutputData,
+                ErrorData = ReturnedErrorData
+            };
         }
     }
 }

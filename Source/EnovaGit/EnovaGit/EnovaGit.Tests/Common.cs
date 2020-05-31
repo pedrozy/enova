@@ -9,6 +9,9 @@ namespace EnovaGit.Tests
 {
     public class Common
     {
+        public const string Path1 = @"C:\Program Files (x86)\Soneta";
+        public const string Path2 = @"C:\Users\Public";
+
         public static string GitRepositoryPath
         {
             get

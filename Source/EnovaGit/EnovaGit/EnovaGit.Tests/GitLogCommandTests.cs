@@ -26,7 +26,7 @@ namespace EnovaGit.Tests
         {
             foreach (var configuration in Common.TestConfiguration)
             {
-                cmdRunnerStub.ReturnedValue = configuration.RawGitLog;
+                cmdRunnerStub.ReturnedOutputData = configuration.RawGitLog;
                 Assert.AreEqual(configuration.GitCommitCollection, target.GetGitCommitList(Common.GitRepositoryPath));
             }
         }
@@ -34,7 +34,20 @@ namespace EnovaGit.Tests
         [Test]
         public void GitLogCommand_ThrowsWhenDirectoryDoesNotContainGitRepository()
         {
-            Assert.Throws<Exception>(() => target.GetGitCommitList(""));
+            var errorMsg = $"W lokalizacji {Common.Path1} nie znaleziono repozytorium Gita.";
+
+            var exception = Assert.Throws<Exception>(() => target.GetGitCommitList(Common.Path1));
+            Assert.AreEqual(errorMsg, exception.Message);
+        }
+
+        [Test]
+        public void GitLogCommand_ThrowsWhenGitLogFails()
+        {
+            var errorMsg = "Fatal Error Test";
+            cmdRunnerStub.ReturnedErrorData = errorMsg + "\r\n";
+
+            var exception = Assert.Throws<Exception>(() => target.GetGitCommitList(Common.GitRepositoryPath));
+            Assert.AreEqual(errorMsg, exception.Message);
         }
     }
 }
