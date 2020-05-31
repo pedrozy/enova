@@ -2,6 +2,7 @@
 using EnovaGit.Tests.Stubs;
 using NUnit.Framework;
 using System;
+using System.IO;
 
 namespace EnovaGit.Tests
 {
@@ -15,6 +16,9 @@ namespace EnovaGit.Tests
         {
             cmdRunnerStub = new CommandRunnerStub();
             target = new GitLogCommand(cmdRunnerStub);
+
+            Directory.CreateDirectory(Common.GitRepositoryPath);
+            Directory.CreateDirectory(Path.Combine(Common.GitRepositoryPath, ".git"));
         }
 
         [Test]

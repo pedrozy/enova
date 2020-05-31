@@ -7,9 +7,9 @@
     <PlatformTarget></PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="DirForTests\GitRepository\.git\dummyFile.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Compile Remove="DirForTests\**" />
+    <EmbeddedResource Remove="DirForTests\**" />
+    <None Remove="DirForTests\**" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnovaGit\EnovaGit.csproj" />
