@@ -28,14 +28,14 @@ namespace EnovaGit.Tests
             get
             {
                 var RawGitLog0 = string.Join("\r\n",
-                    $"hashcode8 ; {Common.Username1} ; 2020-05-22 ; Przykładowy opis commita 8",
-                    $"hashcode7 ; {Common.Username1} ; 2020-05-22 ; Przykładowy opis commita 7",
-                    $"hashcode6 ; {Common.Username1} ; 2020-05-22 ; Przykładowy opis commita 6",
-                    $"hashcode5 ; {Common.Username2} ; 2020-05-21 ; Przykładowy opis commita 5",
-                    $"hashcode4 ; {Common.Username1} ; 2020-05-21 ; Przykładowy opis commita 4",
-                    $"hashcode3 ; {Common.Username2} ; 2020-05-20 ; Przykładowy opis commita 3",
-                    $"hashcode2 ; {Common.Username3} ; 2020-05-19 ; Przykładowy opis commita 2",
-                    $"hashcode1 ; {Common.Username1} ; 2020-05-18 ; Przykładowy opis commita 1"
+                    $"hashcode8 ;;; {Common.Username1} ;;; 2020-05-22 ;;; Przykładowy opis commita 8",
+                    $"hashcode7 ;;; {Common.Username1} ;;; 2020-05-22 ;;; Przykładowy opis commita 7",
+                    $"hashcode6 ;;; {Common.Username1} ;;; 2020-05-22 ;;; Przykładowy opis commita 6",
+                    $"hashcode5 ;;; {Common.Username2} ;;; 2020-05-21 ;;; Przykładowy opis commita 5",
+                    $"hashcode4 ;;; {Common.Username1} ;;; 2020-05-21 ;;; Przykładowy opis commita 4",
+                    $"hashcode3 ;;; {Common.Username2} ;;; 2020-05-20 ;;; Przykładowy opis commita 3",
+                    $"hashcode2 ;;; {Common.Username3} ;;; 2020-05-19 ;;; Przykładowy opis commita 2",
+                    $"hashcode1 ;;; {Common.Username1} ;;; 2020-05-18 ;;; Przykładowy opis commita 1"
                 );
 
                 var GitCommitCollection0 = new List<GitCommit>()
@@ -51,9 +51,9 @@ namespace EnovaGit.Tests
                 };
 
                 var RawGitLog1 = string.Join("\r\n",
-                    $"af4c3d2a ; {Common.Username1} ; 2020-05-23 ; Bug fixing",
-                    $"54ca3b9f ; {Common.Username1} ; 2020-05-23 ; Adding new functionality",
-                    $"3d2ea511 ; {Common.Username4} ; 2020-05-23 ; Initial commit"
+                    $"af4c3d2a ;;; {Common.Username1} ;;; 2020-05-23 ;;; Bug fixing",
+                    $"54ca3b9f ;;; {Common.Username1} ;;; 2020-05-23 ;;; Adding new functionality",
+                    $"3d2ea511 ;;; {Common.Username4} ;;; 2020-05-23 ;;; Initial commit"
                 );
 
                 var GitCommitCollection1 = new List<GitCommit>()

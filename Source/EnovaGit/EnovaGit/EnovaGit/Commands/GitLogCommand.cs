@@ -10,7 +10,7 @@ namespace EnovaGit.Commands
 {
     public class GitLogCommand : IGitLogCommand
     {
-        private const string command = "git log --pretty=format:\"%h ; %an ; %ad ; %s\" --date=short";
+        private const string command = "git log --pretty=format:\"%h ;;; %an ;;; %ad ;;; %s\" --date=short";
 
         private ICommandRunner CmdRunner { get; set; }
 
@@ -41,7 +41,7 @@ namespace EnovaGit.Commands
 
             foreach (var line in gitLog.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
             {
-                var splitLine = line.Split(';').Select(x => x.Trim()).ToList();
+                var splitLine = line.Split(new string[] { ";;;" }, StringSplitOptions.None).Select(x => x.Trim()).ToList();
 
                 list.Add(new GitCommit()
                 {
